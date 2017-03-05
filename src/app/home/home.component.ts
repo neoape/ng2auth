@@ -7,6 +7,8 @@ import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
 
+import {Auth} from '../services/auth.service'
+
 @Component({
   // The selector is what angular internally uses
   // for `document.querySelectorAll(selector)` in our index.html
@@ -27,7 +29,8 @@ export class HomeComponent implements OnInit {
   // TypeScript public modifiers
   constructor(
     public appState: AppState,
-    public title: Title
+    public title: Title,
+    private auth:Auth
   ) {}
 
   public ngOnInit() {

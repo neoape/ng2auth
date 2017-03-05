@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 import { AppState } from './app.service';
 
+import {Auth} from './services/auth.service';
+
 /*
  * App Component
  * Top Level Component
@@ -40,6 +42,17 @@ import { AppState } from './app.service';
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         About
       </a>
+      <a [routerLink]=" ['./profile'] "
+        routerLinkActive="active"
+         [routerLinkActiveOptions]= "{exact: true}">
+        Profile
+      </a>
+      <a href="#" (click)="auth.login()">
+        Login
+      </a>
+      <a href="#" (click)="auth.logout()">
+        Logout
+      </a>
     </nav>
 
     <main>
@@ -64,11 +77,12 @@ export class AppComponent implements OnInit {
   public url = 'https://twitter.com/AngularClass';
 
   constructor(
-    public appState: AppState
+    public appState: AppState,
+    private auth:Auth
   ) {}
 
   public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+    console.log('Auth', this.auth);
   }
 
 }

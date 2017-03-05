@@ -22,12 +22,17 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {Auth} from './services/auth.service'
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
+import {ProfileComponent} from './profile'
+
+
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -54,7 +59,8 @@ type StoreType = {
     AboutComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    ProfileComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -64,7 +70,9 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    AUTH_PROVIDERS,
+    Auth
   ]
 })
 export class AppModule {
